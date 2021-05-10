@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    background-color: rgba(0, 0, 0, .75);
+    backdrop-filter: blur(5px);
+    height: 64px;
+    top: 0px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo{
+    font-size: 32px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.header__nav{
+    padding-right: 20px;
+}
+
+.header__navelem{
+    padding-left: 10px;
+    color: #696969;
+}
+
+.active{
+    font-weight: bold;
+    color: white;
+}
+
+body{
+    padding-top: 64px;
+}

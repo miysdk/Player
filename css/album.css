@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.content{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.album__cover{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.album{
+    display: flex;
+    padding-top: 20px;
+}
+
+.album__info{
+    padding-left: 30px;
+}
+
+.album__title{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.album__data, .album__description{
+    color: #696969;
+}
+
+.album__description{
+    max-height: 96px;
+    overflow-y:scroll;
+}
+
+.album__data{
+    padding: 20px 0;
+}
+
+.song, .song__info{
+    display: flex;
+}
+
+.song__info, .song__time{
+    padding:0 5px;
+}
+
+.songlist{
+    padding: 30px 0 90px;
+}
+
+.song{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+    background-color: transparent;
+    cursor: pointer;
+    background-color: black;
+}
+
+.song:hover{
+    background-color: #89898957;
+}
+
+.song__number{
+    padding-right: 10px;
+}
+
+.song:last-of-type{
+    border-bottom: 0;
+}
+
+.album__actions{
+    padding-top: 20px;
+}

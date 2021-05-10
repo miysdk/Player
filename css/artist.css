@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    color: white;
+    background-color: black;
+    padding-top: 0 !important;
+}
+
+.artistbg{
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    position: absolute;
+}
+.artistbg__gradient{
+    width: 100%;
+    height: 100vh;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 62%);
+    z-index: -1;
+    position: absolute;
+}
+
+.content{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.artist{
+    padding-top: 60vh;
+}
+
+.artist__title{
+    font-size: 58px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.artist__description{
+    padding-bottom: 40px;
+}
