@@ -12,6 +12,10 @@
     margin: 0 auto;
 }
 
+.disabled{
+    display: none !important;
+}
+
 body{
     background-color: black;
 }
@@ -31,16 +35,124 @@ a:hover{
     font-weight: bold;
     padding: 5px 15px; 
     border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .button__filled{
     color: #030303;
-    background-color: #ee9cff;
-    border: 2px #ee9cff solid;
+    background-color: #0077ff;
+    border: 2px #0077ff solid;
 }
 
 .button__hollow{
-    color: #ee9cff;
+    color: #0077ff;
     background-color: #030303;
-    border: 2px #ee9cff solid;
+    border: 2px #0077ff solid;
+}
+
+
+/* ------------------------ */
+/* TAB VIEW                 */
+/* ------------------------ */
+.tabview{
+    width: 100%;
+    min-height: 100vh;
+
+}
+
+.tab__panel{
+    display: flex;
+
+    border-bottom: 2px white solid;
+}
+
+.tab__button{
+    border: 2px white solid;
+    border-bottom: 0;
+    border-right: 0;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.tab__button:hover{
+    padding-top: 2px;
+    padding-bottom: 8px;
+}
+
+.tab__button:last-child{
+    border-right: 2px solid white;
+    border-radius: 0 5px 0 0;
+}
+
+.tab__button:first-child{
+    border-radius: 5px 0 0 0;
+}
+
+.tab__active{
+    font-weight: bold;
+    cursor: default;
+    padding: 5px !important;
+}
+
+/* viewer */
+
+.viewer__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.viewer__body{
+    width: 100%;
+    height: 100%;
+}
+
+.viewer__title{
+    text-align: center;
+    font-size: 32px;
+    padding-left: 10px;
+}
+
+.viewer__add{
+    margin-right: 10px;
+}
+
+.table{
+    padding: 5px;
+    margin: 0 auto;
+}
+
+input[type=text]{
+    background-color: black;
+    height: 34px;
+    font-size: 16px;
+    border:2px solid #0077ff;
+    border-radius: 5px;
+}
+
+select, option, input[type=date]{
+    color: black;
+}
+
+
+
+/* ________________________ */
+/* ________________________ */
+/* ________________________ */
+
+.overlay{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.ovui{
+    background: #292929;
+    padding: 20px;
+    display: flex;
 }

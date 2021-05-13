@@ -1,89 +1,93 @@
-function Playlist(songid){
-    if(playlist.length <= 0) return;
-    document.getElementById("player");
-    if(player.ended && playlist.length != 0){
-        NextSong();
-    }
-    setTimeout(function(){Playlist(playingid)}, 100);
-    //return;
-}
+var player, playbtn, seekbar, playlist = [], playingid = null;
+var title, artist, time;
 
-function AddToPlaylist(song){
-    playlist.push(song);
-    playingid = playlist.length-1;
-    SetSong(playlist[playingid]);
-    console.log(playlist);
-}
+var mouseDown = 0;
 
-function AddSongsToQueue(songs){
-    songs.forEach(element => {
-        AddToPlaylist(element);
-    });
-    playingid=playlist.length-songs.length;
-    console.log(playingid=playlist.length-songs.length);
-    SetSong(playlist[playingid]);
-    Playlist(playingid);
-}
 
-function SetSong(song){
-    src = "audio/"+song[0];
+function initializePlayer(){
     player = document.getElementById("player");
-    document.getElementById("player__songname").innerHTML = song[1];
-    document.getElementById("player__artistalbum").innerHTML = song[2] + " • " + song[3];
-    document.getElementById("player__visual").style.display = "flex";
+    playbtn = document.getElementById("playbtn");
+    seekbar = document.getElementById("seekslider");
+    title = document.getElementById("player__songname");
+    artist = document.getElementById("player__artistalbum");
+    time = document.getElementById("player__time")
 
-    player.src = src;
-    setTimeout(Play, 100);
-}
-
-function PrevSong(){
-    if (!playingid == 0) {
-        playingid = playingid-1;
+    player.addEventListener("timeupdate", onPlay, false);
+    seekbar.addEventListener("change", playerSeek, false);
+    seekbar.addEventListener("click", playerSeek, false);
+    elements = document.getElementsByClassName("songurl");
+    for (let index = 0; index < elements.length; index++) {
+        playlist.push(elements[index].value);
     }
-    SetSong(playlist[playingid]);
 }
 
-function NextSong(){
-    if(playingid+1 >= playlist.length) return;
-    playingid += 1;
-    SetSong(playlist[playingid]);
-}
+window.onload = initializePlayer;
 
-function Play(){
-    player = document.getElementById("player");
-    if (player.currentSrc == "") return;
+
+function playerPlay(){
     player.play();
-    ToggleBTNs();
-    indicator();
+    playbtn.innerHTML = "⏸";
 }
 
-function Pause(){
-    player = document.getElementById("player");
+function playerPause(){
     player.pause();
-    ToggleBTNs();
+    playbtn.innerHTML = "▶️";
 }
 
-function Skip10(){
-    player = document.getElementById("player");
-    if(player.paused||player.ended||player.currentTime+10>=player.duration) return;
-    player.currentTime += 10;
-}
-
-function ToggleBTNs(){
-    document.getElementById("playbtn").classList.toggle("hidden");
-    document.getElementById("pausebtn").classList.toggle("hidden");
-}
-
-function indicator(){
-    player = document.getElementById("player");
-    ind = document.getElementById("player__indicator");
-    if(player.ended || player.paused && player.currentTime == 0) {
-        ind.style.width = 0;
-        Pause();
-        return;
+function togglePlay(){
+    if(player.currentSrc == "") return;
+    if(player.paused) {
+        playerPlay();
     }
-    if(player.paused) return;
-    var per = player.currentTime/player.duration*100;
-    ind.style.width = per+"%";
-    setTimeout(indicator, 100)
+    else {
+        playerPause();
+    }
+}
+
+function playerPrev(){
+    console.log("yass")
+    if (!playingid-1 < 0) {
+        playingid--;
+    }
+    setSong(playingid);
+}
+
+function playerNext(){
+    console.log("queen")
+    if (playingid+1 > playlist.length-1) return;
+    playingid++;
+    setSong(playingid);
+}
+
+function onPlay(){
+    if(mouseDown == 0)
+    seekbar.value = player.currentTime / player.duration * 100;
+
+    
+    tsec = player.currentTime%60;
+    tmin = player.currentTime/60%60 - tsec/60;
+    time.innerHTML = tmin+":"+Math.round(tsec);
+
+    seekbar.onmousedown = function() { 
+    ++mouseDown;
+    }
+    seekbar.onmouseup = function() {
+    --mouseDown;
+    }
+
+    if(player.ended) playerNext();
+}
+
+function setSong(id){
+    playingid = id;
+    player.src = "audio/" + playlist[id];
+    playerPlay();
+    title.innerHTML = document.getElementsByClassName("songname")[id].value;
+    artist.innerHTML = document.getElementsByClassName("songartist")[id].value;
+    document.getElementsByClassName("player")[0].classList.remove("disabled");
+}
+
+function playerSeek(){
+    var seekto = seekbar.value / 100 * player.duration;
+    player.currentTime = seekto;
 }
