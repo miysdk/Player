@@ -9,7 +9,7 @@ function GetFromDB($connect, $query){
 function DisplayerElement($href, $name, $image, $description){
     echo '<div class="displayer__element">
     <a href="'.$href.'">
-    <img src="images/'.$image.'" alt="" class="element__cover">
+    <img src="'.$image.'" alt="" class="element__cover">
     </a>
     <div class="element__title"><a href="'.$href.'">'.$name.'</a></div>
     <div class="element__subtitle">'.$description.'</div>

@@ -47,7 +47,7 @@ a:hover{
 
 .button__hollow{
     color: #0077ff;
-    background-color: #030303;
+    background-color: transparent;
     border: 2px #0077ff solid;
 }
 
@@ -132,7 +132,8 @@ input[type=text]{
     border-radius: 5px;
 }
 
-select, option, input[type=date]{
+select, option, input[type=date],
+textarea{
     color: black;
 }
 
@@ -155,4 +156,74 @@ select, option, input[type=date]{
     background: #292929;
     padding: 20px;
     display: flex;
+}
+
+
+/* ________________________ */
+/* ACCORDION                */
+/* ________________________ */
+
+.acc{
+    width: 60%;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: #212121;
+}
+
+.acc__closed:hover{
+    background-color: #696969;
+}
+
+.acc__closed{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.acc__image{
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+}
+
+.acco__image{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.acc__element{
+    border-bottom: 1px #696969 solid;
+}
+
+.acc__element:last-child{
+    border-bottom: 0;
+}
+
+.acc__info{
+    display: flex;
+    padding: 5px;
+}
+
+.acc__text{
+    margin-left: 20px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    min-width: 50%;
+}
+
+.acc__description{
+    font-size: 12px;
+}
+
+.acc__title{
+    font-weight: bold;
+}
+
+.acc__close{
+    width: 98%;
+    margin: 1%;
 }

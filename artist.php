@@ -29,7 +29,6 @@ $singles = GetFromDB($conn, "SELECT * from `albums` where `artistid` = ".$_GET['
         <div class="artist__info">
             <div class="artist__title"><?php echo $data[0][1] ?></div>
             <div class="artist__description"><?php echo $data[0][3] ?></div>
-
         </div>
 
         <div class="displayer">
@@ -44,7 +43,7 @@ $singles = GetFromDB($conn, "SELECT * from `albums` where `artistid` = ".$_GET['
                 foreach ($albums as $album) {
                     $type = GetFromDB($conn, "SELECT * from `albumtypes` where `id` = ".$album[6]);
                     $artist = GetFromDB($conn, "SELECT * FROM `artists` where `id` = ".$album[3]);
-                    DisplayerElement("album.php?id='".$album[0]."'", $album[1], "albums/".$album[2], $type[0][1]);
+                    DisplayerElement("album.php?id='".$album[0]."'", $album[1], "images/albums/".$album[2], $type[0][1]);
                 }
 
                 echo '<!-- ELEMENTS -->
@@ -59,7 +58,7 @@ $singles = GetFromDB($conn, "SELECT * from `albums` where `artistid` = ".$_GET['
                 foreach ($singles as $album) {
                     $type = GetFromDB($conn, "SELECT * from `albumtypes` where `id` = ".$album[6]);
                     $artist = GetFromDB($conn, "SELECT * FROM `artists` where `id` = ".$album[3]);
-                    DisplayerElement("album.php?id='".$album[0]."'", $album[1], "albums/".$album[2], $type[0][1]);
+                    DisplayerElement("album.php?id='".$album[0]."'", $album[1], "images/albums/".$album[2], $type[0][1]);
                 }
 
                 echo '<!-- ELEMENTS -->

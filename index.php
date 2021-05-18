@@ -44,7 +44,7 @@ include("php/header.php");
 
             $data = GetFromDB($conn, "SELECT * FROM `artists`");
             foreach ($data as $artist) {
-                DisplayerElement("artist.php?id=".$artist[0], $artist[1], "artists/".$artist[2], "Artist");
+                DisplayerElement("artist.php?id=".$artist[0], $artist[1], "images/artists/".$artist[2], "Artist");
             }
 
             ?>
@@ -63,7 +63,7 @@ include("php/header.php");
             foreach ($albums as $album) {
                 $type = GetFromDB($conn, "SELECT * from `albumtypes` where `id` = ".$album[6]);
                 $artist = GetFromDB($conn, "SELECT * FROM `artists` where `id` = ".$album[3]);
-                DisplayerElement("album.php?id=".$album[0], $album[1], "albums/".$album[2], $type[0][1]." by <a href='artist.php?id=".$artist[0][0]."'>".$artist[0][1]."</a>");
+                DisplayerElement("album.php?id=".$album[0], $album[1], "images/albums/".$album[2], $type[0][1]." by <a href='artist.php?id=".$artist[0][0]."'>".$artist[0][1]."</a>");
             }
 
             ?>
@@ -82,7 +82,7 @@ include("php/header.php");
             foreach ($singles as $single) {
                 $type = GetFromDB($conn, "SELECT * from `albumtypes` where `id` = ".$single[6]);
                 $artist = GetFromDB($conn, "SELECT * FROM `artists` where `id` = ".$single[3]);
-                DisplayerElement("album.php?id=".$single[0], $single[1], "albums/".$single[2], $type[0][1]." by ".$artist[0][1]);
+                DisplayerElement("album.php?id=".$single[0], $single[1], "images/albums/".$single[2], $type[0][1]." by ".$artist[0][1]);
             }
 
             ?>
