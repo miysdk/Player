@@ -81,10 +81,20 @@ function onPlay(){
 function setSong(id){
     playingid = id;
     player.src = "audio/" + playlist[id];
-    playerPlay();
     title.innerHTML = document.getElementsByClassName("songname")[id].value;
     artist.innerHTML = document.getElementsByClassName("songartist")[id].value;
+    playerPlay();
     document.getElementsByClassName("player")[0].classList.remove("disabled");
+}
+
+function setFromUrl(src, name, artist){
+    console.log("hi");
+    player.src = "audio/" + src;
+    title.innerHTML = name;
+    artist.innerHTML = artist;
+    playerPlay();
+    document.getElementsByClassName("player")[0].classList.remove("disabled");
+
 }
 
 function playerSeek(){

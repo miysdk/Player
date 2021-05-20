@@ -133,7 +133,7 @@ input[type=text]{
 }
 
 select, option, input[type=date],
-textarea{
+textarea, input[type=search]{
     color: black;
 }
 

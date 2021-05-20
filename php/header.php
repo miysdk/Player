@@ -5,7 +5,7 @@
         <nav class="header__nav">
             <a id="home" class="header__navelem" href="index.php">Home</a>
             <a id="library" class="header__navelem" href="#">Library</a>
-            <a id="search" class="header__navelem" href="#">Search</a>
+            <a id="search" class="header__navelem" href="searchpage.php">Search</a>
         </nav>
     </header>
 
@@ -14,10 +14,14 @@
         switch (document.title) {
             case "Home":
                     document.getElementById("home").classList.add("active");
-                break;
+            break;
+
+            case "Search":
+                document.getElementById("search").classList.add("active");
+            break;
         
             default:
-                break;
+            break;
         }
         
     </script>
