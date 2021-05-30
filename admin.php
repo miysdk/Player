@@ -1,8 +1,15 @@
 <?php
 
+session_start();
 include("php/connect.php");
 include("php/functions.php");
 
+$user_data = checkLogin($conn);
+if($user_data['roleid'] != 2) 
+{
+    header("Location: index.php");
+    die();
+}
 
 
 ?>

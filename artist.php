@@ -1,7 +1,10 @@
 <?php
 
+session_start();
 include("php/connect.php");
 include("php/functions.php");
+
+$user_data = checkLogin($conn);
 include("php/header.php");
 
 $data = GetFromDB($conn, "SELECT * from `artists` where `id` = ".$_GET['id']);

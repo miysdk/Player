@@ -1,6 +1,9 @@
 <?php
+session_start();
 include("php/connect.php");
 include("php/functions.php");
+
+$user_data = checkLogin($conn);
 include("php/header.php");
 include("php/player.php");
 
