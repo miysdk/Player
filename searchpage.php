@@ -5,7 +5,7 @@ include("php/connect.php");
 include("php/functions.php");
 
 $user_data = checkLogin($conn);
-include("php/player.php");
+include("html/player.html");
 
 
 if(isset($_POST['searchinput'])){
@@ -16,17 +16,17 @@ if(isset($_POST['searchinput'])){
 
     $artistmatch = [];
     foreach ($artists as $item) {
-        if (str_contains(strtolower($item[1]), $input)) array_push($artistmatch, $item);
+        if (strpos(strtolower($item[1]), strtolower($input)) !== false) array_push($artistmatch, $item);
     }
 
     $albummatch = [];
     foreach ($albums as $item) {
-        if (str_contains(strtolower($item[1]), $input)) array_push($albummatch, $item);
+        if (strpos(strtolower($item[1]), strtolower($input)) !== false) array_push($albummatch, $item);
     }
 
     $songmatch = [];
     foreach ($songs as $item) {
-        if (str_contains(strtolower($item[1]), $input)) array_push($songmatch, $item);
+        if (strpos(strtolower($item[1]), strtolower($input)) !== false) array_push($songmatch, $item);
     }
 }
 

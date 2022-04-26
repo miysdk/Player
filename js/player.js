@@ -1,7 +1,8 @@
-var player, playbtn, seekbar, playlist = [], playingid = null;
-var title, artist, time;
+let player, playbtn, seekbar, playlist = [], playingid = null;
+let title, artist, curTime;
+let durTime;
 
-var mouseDown = 0;
+let mouseDown = 0;
 
 
 function initializePlayer(){
@@ -10,7 +11,7 @@ function initializePlayer(){
     seekbar = document.getElementById("seekslider");
     title = document.getElementById("player__songname");
     artist = document.getElementById("player__artistalbum");
-    time = document.getElementById("player__time")
+    curTime = document.getElementById("player__time")
 
     player.addEventListener("timeupdate", onPlay, false);
     seekbar.addEventListener("change", playerSeek, false);
@@ -23,29 +24,17 @@ function initializePlayer(){
 
 window.onload = initializePlayer;
 
-
-function playerPlay(){
-    player.play();
-    playbtn.innerHTML = "⏸";
-}
-
-function playerPause(){
-    player.pause();
-    playbtn.innerHTML = "▶️";
-}
-
 function togglePlay(){
     if(player.currentSrc == "") return;
     if(player.paused) {
-        playerPlay();
+        player.play();
     }
     else {
-        playerPause();
+        player.pause();
     }
 }
 
 function playerPrev(){
-    console.log("yass")
     if (!playingid-1 < 0) {
         playingid--;
     }
@@ -53,20 +42,30 @@ function playerPrev(){
 }
 
 function playerNext(){
-    console.log("queen")
     if (playingid+1 > playlist.length-1) return;
     playingid++;
     setSong(playingid);
+}
+
+function getCur(){
+    tsec = player.currentTime%60;
+    tmin = player.currentTime/60%60 - tsec/60;
+    return Math.round(tmin)+":"+Math.round(tsec);
+}
+
+function getDur(){
+    player.addEventListener('loadedmetadata', function(){
+        tsec = player.duration%60;
+        tmin = player.duration/60%60 - tsec/60;
+        durTime = Math.round(tmin)+":"+Math.round(tsec);
+    },false);
 }
 
 function onPlay(){
     if(mouseDown == 0)
     seekbar.value = player.currentTime / player.duration * 100;
 
-    
-    tsec = player.currentTime%60;
-    tmin = player.currentTime/60%60 - tsec/60;
-    time.innerHTML = tmin+":"+Math.round(tsec);
+    curTime.innerHTML = getCur()+" / "+durTime;
 
     seekbar.onmousedown = function() { 
     ++mouseDown;
@@ -80,15 +79,15 @@ function onPlay(){
 
 function setSong(id){
     playingid = id;
+    durTime = getDur(player);
     player.src = "audio/" + playlist[id];
     title.innerHTML = document.getElementsByClassName("songname")[id].value;
     artist.innerHTML = document.getElementsByClassName("songartist")[id].value;
-    playerPlay();
+    player.play();
     document.getElementsByClassName("player")[0].classList.remove("disabled");
 }
 
 function setFromUrl(src, name, artist){
-    console.log("hi");
     player.src = "audio/" + src;
     title.innerHTML = name;
     artist.innerHTML = artist;
@@ -98,6 +97,6 @@ function setFromUrl(src, name, artist){
 }
 
 function playerSeek(){
-    var seekto = seekbar.value / 100 * player.duration;
+    let seekto = seekbar.value / 100 * player.duration;
     player.currentTime = seekto;
 }

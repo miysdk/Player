@@ -30,16 +30,6 @@ include("php/header.php");
 <body>
     
     <div class="content">
-        <!-- <div class="displayer">
-            <div class="displayer__title">Random liked</div>
-            <div class="displayer__element">
-                <img src="http://placehold.it/200" alt="" class="element__cover">
-                <div class="element__title">Your likes</div>
-                <div class="element__subtitle">Playlist</div>
-            </div>
-        </div> -->
-
-        
         <div class="displayer">
             <div class="displayer__title">Artists</div>
             <div class="displayer__list">
