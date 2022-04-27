@@ -77,23 +77,24 @@ function onPlay(){
     if(player.ended) playerNext();
 }
 
-function setSong(id){
+function setById(id){
     playingid = id;
     durTime = getDur(player);
-    player.src = "audio/" + playlist[id];
-    title.innerHTML = document.getElementsByClassName("songname")[id].value;
-    artist.innerHTML = document.getElementsByClassName("songartist")[id].value;
-    player.play();
-    document.getElementsByClassName("player")[0].classList.remove("disabled");
+    setFromUrl(playlist[id], document.getElementsByClassName("songname")[id].value, document.getElementsByClassName("songartist")[id].value)
+    // player.src = "audio/" + playlist[id];
+    // title.innerHTML = document.getElementsByClassName("songname")[id].value;
+    // artist.innerHTML = document.getElementsByClassName("songartist")[id].value;
+    // player.play();
+    // document.getElementsByClassName("player")[0].classList.remove("disabled");
 }
 
 function setFromUrl(src, name, artist){
+    durTime = getDur(player);
     player.src = "audio/" + src;
     title.innerHTML = name;
     artist.innerHTML = artist;
-    playerPlay();
+    player.play();
     document.getElementsByClassName("player")[0].classList.remove("disabled");
-
 }
 
 function playerSeek(){

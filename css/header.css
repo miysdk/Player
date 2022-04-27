@@ -22,6 +22,10 @@ header{
     font-weight: bold;
 }
 
+.header__logo a{
+    text-decoration: none;
+}
+
 .header__nav{
     padding-right: 20px;
 }

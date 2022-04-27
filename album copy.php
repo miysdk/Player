@@ -14,7 +14,6 @@ $type = GetFromDB($conn, "SELECT * from `albumtypes` where `id` = ".$data[0][6])
     <script>
         document.title = "<?php echo $data[0][1] ?>";
         let urls = new Array();
-        let tmpa = new Audio();
     </script>
     <script src="js/nav.js"></script>
     <div class="content">
@@ -56,12 +55,15 @@ $type = GetFromDB($conn, "SELECT * from `albumtypes` where `id` = ".$data[0][6])
             }
             ?>
             <script>
-                tmpa.src = 'audio/'+urls[index];
-                mpa.addEventListener('loadedmetadata', function(){
+                for (let index = 0; index < urls.length; index++) {
+                    let tmpa = new Audio();
+                    tmpa.src = 'audio/'+urls[index];
+                    tmpa.addEventListener('loadedmetadata', function(){
                         tsec = tmpa.duration%60;
                         tmin = tmpa.duration/60%60 - tsec/60;
-                        echo Math.round(tmin).":".Math.round(tsec);
+                        document.getElementById('time'+index).innerHTML = Math.round(tmin)+":"+Math.round(tsec);
                     },false);
+                }
             </script>
     <!-- CONTENT -->
     </div>

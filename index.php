@@ -1,34 +1,15 @@
 <?php 
-
-session_start();
 include("php/connect.php");
 include("php/functions.php");
-
-$user_data = checkLogin($conn);
+include("html/header.html");
 
 $albums = GetFromDB($conn, "SELECT * FROM `albums` where `typeid` = 1 OR `typeid` = 2");
 $singles = GetFromDB($conn, "SELECT * FROM `albums` where `typeid` = 3");
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-    <link rel="stylesheet" href="css/list.css">
-</head>
-
-<?php
-include("php/header.php");
-?>
-
 <body>
-    
+    <script>document.title = 'Home';</script>
+    <script src="js/nav.js"></script>
     <div class="content">
         <div class="displayer">
             <div class="displayer__title">Artists</div>
@@ -85,4 +66,3 @@ include("php/header.php");
         </div>
     </div>
 </body>
-</html>

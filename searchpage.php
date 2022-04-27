@@ -3,9 +3,9 @@
 session_start();
 include("php/connect.php");
 include("php/functions.php");
-
-$user_data = checkLogin($conn);
 include("html/player.html");
+include("html/header.html");
+
 
 
 if(isset($_POST['searchinput'])){
@@ -33,19 +33,11 @@ if(isset($_POST['searchinput'])){
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/list.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-</head>
 <body>
-    <?php include("php/header.php") ?>
+    <script src="js/player.js"></script>
+    <script>document.title = "Search";</script>
+    <script src="js/nav.js"></script>
+    s
     <form action="searchpage.php" method="POST">
         <div style="display: flex; justify-content:center;"><input style="width: 50%;" type="text" name="searchinput" placeholder="Search..."><br><br><br></div>
         <!-- <input type="submit" value="Go"> -->
@@ -131,4 +123,3 @@ if(isset($_POST['searchinput'])){
     ?>
     </div>
 </body>
-</html>
